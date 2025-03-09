@@ -1,15 +1,14 @@
 ---
 import deunaLogo from "../assets/deunalogo.png";
-import codigoQr from "../assets/descarga.png";
+import QrCode from "../components/QrCode";
 ---
 
 <div class="container">
   <div class="logo">
     <img src={deunaLogo.src} alt="Deuna logo" />
   </div>
-  <div class="qr">
-    <img src={codigoQr.src} alt="QR code" />
-  </div>
+  
+  <QrCode client:load />
 
   <p class="text-qr">Usa este código QR para cobrar</p>
 
