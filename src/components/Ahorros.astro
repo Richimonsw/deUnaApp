@@ -1,0 +1,316 @@
+---
+
+---
+
+<div class="container">
+  <!-- Mostrar día actual -->
+  <div class="date">
+    <p id="current-date"></p>
+  </div>
+
+  <!-- Título Principal -->
+  <div class="header-ai">
+    <h2>Ahorro Automático</h2>
+    <!-- Botón para ir a la IA; cambia la URL según necesites -->
+    <button class="save-btn-ia" onclick="window.location.href='/chat'">IA</button>
+  </div>
+
+  <!-- Cuadro de Ingresos -->
+  <div class="saving-box">
+    <p class="box-title">Ingresos Diarios</p>
+
+    <div class="input-group">
+      <label for="ingresos">Ingrese sus ingresos:</label>
+      <input type="number" id="ingresos" placeholder="Ej. 500" />
+    </div>
+
+    <div class="input-group">
+      <label for="sugerencia">Sugerencia de Ahorro:</label>
+      <input type="text" id="sugerencia" placeholder="Ej. 20%" />
+    </div>
+
+    <button class="save-btn" onclick="guardarAhorro()"
+      >Guardar en Billetera</button
+    >
+  </div>
+
+  <!-- Historial de Ahorros -->
+  <h3>Historial de Ahorros</h3>
+  <div class="history">
+    <ul id="historial-lista">
+      <li>📅 5 de Marzo - Ingresos: $500 | Ahorro: 20% ($100)</li>
+      <li>📅 6 de Marzo - Ingresos: $450 | Ahorro: 15% ($67.50)</li>
+      <li>📅 7 de Marzo - Ingresos: $600 | Ahorro: 25% ($150)</li>
+      <li>📅 8 de Marzo - Ingresos: $550 | Ahorro: 18% ($99)</li>
+      <li>📅 9 de Marzo - Ingresos: $480 | Ahorro: 22% ($105.60)</li>
+      <li>📅 10 de Marzo - Ingresos: $530 | Ahorro: 20% ($106)</li>
+    </ul>
+  </div>
+
+  <div class="nav-bar">
+    <div class="nav-item" onclick="window.location.href='/home'">
+      <i class="fa-solid fa-house"></i>
+      <p>Inicio</p>
+    </div>
+    <div class="nav-item">
+      <i class="fa-solid fa-ticket"></i>
+      <p>Promos</p>
+    </div>
+    <div class="nav-item" onclick="window.location.href='/pagina4'">
+      <i class="fa-solid fa-credit-card"></i>
+      <p>Billetera</p>
+    </div>
+    <div class="nav-item"><i class="fa-solid fa-user"></i> <p>Tú</p></div>
+  </div>
+
+  <br><br><br><br><br>
+</div>
+
+<style>
+
+  /* Contenedor Principal */
+  .container {
+    padding: 15px;
+    background-color: #ffffff;
+  }
+
+  /* Estilos del Día */
+  .date {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5d5a5a;
+    margin-bottom: 15px;
+  }
+
+  /* Contenedor del título y botón IA */
+  .header-ai {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative; /* Para posicionar el botón en la esquina */
+  }
+
+  /* Título Principal */
+  .header-ai h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin: 0; /* Para que no haya espacio extra */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Botón pequeño "Ir a IA" */
+  .header-ai .ia-btn {
+    background-color: #5a189a;
+    color: white;
+    border: none;
+    padding: 4px 8px; /* Menos ancho y más pequeño */
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.2s ease;
+    position: absolute; /* Para ubicarlo en esquina superior derecha */
+    top: 0;
+    right: 0;
+  }
+
+  .header-ai .ia-btn:hover {
+    background-color: #4c148a;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    transform: translateY(-2px);
+  }
+
+  /* Estilos del cuadro de ingresos */
+  .saving-box {
+    background: linear-gradient(135deg, #7bdcb5, #6c5ce7);
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .saving-box .box-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  /* Grupos de inputs */
+  .input-group {
+    margin: 12px 0;
+    text-align: left;
+  }
+
+  .input-group label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .input-group input:focus {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Botón Guardar */
+  .save-btn {
+    background-color: #5a189a;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  .save-btn-ia {
+    background-color: #5a189a;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  .save-btn:hover {
+    background-color: #4c148a;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    transform: translateY(-2px);
+  }
+
+  /* Historial de Ahorros */
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #5d5a5a;
+    margin-top: 25px;
+    text-transform: uppercase;
+  }
+
+  .history {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 12px;
+  }
+
+  .history ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0; /* Evita que el footer lo cubra */
+  }
+
+  .history ul li {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+    color: #545454;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .history ul li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Ítems de la Navegación */
+  .nav-item {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .nav-item i {
+    font-size: 20px;
+    color: #6c5ce7;
+  }
+</style>
+
+<!-- Script para mostrar la fecha y manejar el botón de guardar -->
+<script>
+  document.getElementById("current-date").innerText =
+    new Date().toLocaleDateString("es-ES", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+  function guardarAhorro() {
+    let ingresos = document.getElementById("ingresos").value;
+    let sugerencia = document.getElementById("sugerencia").value;
+
+    if (ingresos && sugerencia) {
+      let porcentaje = parseFloat(sugerencia.replace("%", "")) / 100;
+      let ahorroCalculado = (parseFloat(ingresos) * porcentaje).toFixed(2);
+
+      let lista = document.getElementById("historial-lista");
+      let nuevoRegistro = document.createElement("li");
+
+      let fecha = new Date().toLocaleDateString("es-ES", {
+        day: "numeric",
+        month: "long",
+      });
+
+      nuevoRegistro.innerHTML = `📅 ${fecha} - Ingresos: $${ingresos} | Ahorro: ${sugerencia} ($${ahorroCalculado})`;
+      lista.appendChild(nuevoRegistro);
+
+      document.getElementById("ingresos").value = "";
+      document.getElementById("sugerencia").value = "";
+    } else {
+      alert("Por favor, complete ambos campos antes de guardar.");
+    }
+  }
+</script>

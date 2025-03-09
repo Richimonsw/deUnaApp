@@ -1,0 +1,253 @@
+---
+
+---
+
+<div class="container">
+  <div class="user-info">
+    <div class="avatar">RM</div>
+    <h2>Hola Ricardo 👋</h2>
+  </div>
+
+  <div class="saldo-container">
+    <p class="saldo">Saldo disponible</p>
+    <h1 class="saldo-value">$ 0,00</h1>
+  </div>
+
+  <div class="promos-container" onclick="window.location.href='/Promos'">
+    <p class="Name-promo">Aprende sobre como ahorrar y cultura financiera</p>
+  </div>
+
+  <div class="options-container">
+    <div class="options-items">
+      <div class="button">
+        <i class="fa-solid fa-money-bill-transfer"></i>
+        <span>Transferir</span>
+      </div>
+      <div class="button">
+        <i class="fa-solid fa-wallet"></i>
+        <span>Recargar</span>
+      </div>
+      <div class="button">
+        <i class="fa-solid fa-money-bill-wave"></i>
+        <span>Cobrar</span>
+      </div>
+      <div class="button">
+        <i class="fas fa-subway"></i>
+        <span>Metro de <br>Quito</span>
+      </div>
+    </div>
+    <div class="options-items">
+      <div class="button">
+        <i class="fa-solid fa-share"></i>
+        <span>Invita y <br>Gana</span>
+      </div>
+      <div class="button">
+        <i class="fa-solid fa-person"></i>
+        <span>Deuna <br> Jovenes</span>
+      </div>
+      <div class="button">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Verificar <br>Pago</span>
+      </div>
+      <div class="button" onclick="window.location.href='/finanzas'">
+        <i class="fa-solid fa-scale-unbalanced-flip"></i>
+        <span>Finanzas</span>
+      </div>
+    </div>
+    <div class="options-items">
+      <div class="button" onclick="window.location.href='/Ahorros'">
+        <i class="fa-solid fa-robot"></i>
+        <span>Ahorro <br>IA</span>
+      </div>
+      <div class="button" onclick="window.location.href='/mapa'">
+        <i class="fa-solid fa-map"></i>
+        <span>Mapa</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="acction-container">
+    <div class="transfer-container">
+        <i class="fas fa-qrcode"></i>
+
+        Transferir
+    </div>
+    <div class="pay-container"> 
+        <i class="fas fa-qrcode"></i>
+
+        Pagar a QR
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <div class="nav-item" onclick="window.location.href='/home'"><i class="fa-solid fa-house"></i> <p>Inicio</p></div>
+    <div class="nav-item"><i class="fa-solid fa-ticket"></i> <p>Promos</p></div>
+    <div class="nav-item" onclick="window.location.href='/pagina4'">
+        <i class="fa-solid fa-credit-card"></i> 
+        <p>Billetera</p>
+    </div>
+    <div class="nav-item"><i class="fa-solid fa-user"></i> <p>Tú</p></div>
+</div>
+</div>
+<style>
+  .container {
+    padding: 5px;
+    background-color: #ffffff;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    background: #d0a6f9;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .saldo-container {
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+  }
+
+  .promos-container {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 15px;
+    background-color: #3D2555;
+    color: #fff;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+  }
+
+  .Name-promo {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    
+  }
+
+  .saldo {
+    font-size: 12px;
+  }
+
+  .options-container {
+    margin-top: 35px;
+  }
+
+  .saldo-value {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 0px;
+  }
+
+  .options-items {
+    display: flex;
+    gap: 0px;
+    margin-top: 15px;
+  }
+
+  .button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000000;
+    width: 10%;
+    min-width: 100px;
+  }
+
+  .button i {
+    font-size: 24px;
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+  }
+  
+  .button span {
+    font-size: 14px;
+    color: #000000;
+    text-align: center;
+  }
+
+  .acction-container {
+    display: flex;ç
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 60px;
+    gap: 10px;
+  }
+
+  .transfer-container {
+    background-color: #ffffff;
+    color: #131313;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  .pay-container {
+    background-color: #662D91;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  /* Barra de Navegación */
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ítems de la Navegación */
+.nav-item {
+    text-align: center;
+    font-size: 14px;
+}
+
+.nav-item i {
+    font-size: 20px;
+    color: #6c5ce7;
+}
+
+
+</style>

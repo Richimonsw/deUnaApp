@@ -1,0 +1,133 @@
+---
+import deunaLogo from "../assets/icon-deuna.png";
+---
+
+<div class="container">
+    <div class="signUp-Container">
+        <!-- Logo -->
+        <img src={deunaLogo.src} alt="Deuna logo" class="logo-img">
+
+        <!-- Formulario de Inicio de Sesión -->
+        <form class="log-in">
+            <div class="input-container">
+                <i class="fas fa-id-card"></i>
+                <input type="number" name="cedula" id="cedula" placeholder="ID / Cédula" required>
+            </div>
+
+            <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" autocomplete="off" placeholder="Contraseña" required>
+            </div>
+
+            <!-- Botón de Ingreso -->
+            <div class="button">
+                <button class="logIn-btn" type="button" onclick="window.location.href='/home'">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #3D2555;
+    font-family: Arial, sans-serif;
+    color:white ;
+  }
+
+  .signUp-Container {
+    max-width: 400px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 20px;
+
+}
+
+/* Estilos para el input con icono */
+.input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-container input {
+    width: 70%;
+    padding: 10px 40px; /* Espacio para el icono */
+    border: none;
+    color: white;
+    border-bottom: 2px solid #2BDAAB;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    
+}
+
+input::placeholder{
+    color: rgba(255, 255, 255, 0.426);
+}
+
+/* Iconos dentro del input */
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #2BDAAB;
+    font-size: 18px;
+}
+
+/* Logo */
+.logo-img {
+    max-width: 150px;
+    max-height: 150px;
+    margin-bottom: 20px;
+}
+
+.log-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.logIn-btn{
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+    background-color: #2BDAAB;
+    color: #ddd;
+    transition: .1s ease;
+}
+
+.logIn-btn:active{
+    background-color:#088261;
+    
+}
+
+.button a{
+    color: #2BDAAB;    
+    text-decoration: none;
+    transition: 0.1s ease;
+}
+
+.button a:active{
+    text-decoration: underline;
+}    
+</style>

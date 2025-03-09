@@ -1,0 +1,295 @@
+---
+import iconoD1 from "../assets/icon-deuna.png";
+---
+
+<div class="container">
+  <div class="header">
+    <i class="fa-solid fa-arrow-left" onclick="window.location.href='/home'"></i>
+    <h2>Estadísticas</h2>
+    <div class="blank-header-space"></div>
+  </div>
+
+  <div class="card" id="mainCard">
+    <div class="card-inner">
+      <div class="balance" id="balanceCard">
+        <p class="saldo">SALDO DISPONIBLE</p>
+        <h1 class="monto">$ 234.54</h1>
+      </div>
+      <div class="ahorro" id="ahorroCard">
+        <p class="saldo-ahorro">SALDO AHORRADO</p>
+        <h1 class="monto">$ 34.54</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="overview">
+    <p>Overview</p>
+    <div class="ia-container" onclick="window.location.href='/chat'">
+      <img src={iconoD1.src} alt="icono-deuna" class="avatar" />
+    </div>
+    <div class="select-container">
+      <select class="custom-select">
+        <option value="mes">Mes</option>
+        <option value="dia">Día</option>
+        <option value="anio">Año</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Ruta corregida -->
+  <img src="/diagrama-mes.png" alt="Gráfico de estadísticas" class="data" />
+
+  <div class="loss-gain">
+    <div class="loss-card card-detail">
+      <i class="fa fa-circle-arrow-down"></i>
+      <div class="card-text">
+        <p>Pérdidas</p>
+        <h3>$76.84</h3>
+      </div>
+    </div>
+    <div class="gain-card card-detail">
+      <i class="fa fa-circle-arrow-down"></i>
+      <div class="card-text">
+        <p>Ganancias</p>
+        <h3>$107.16</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <div class="nav-item" onclick="window.location.href='/home'">
+      <i class="fa-solid fa-house"></i>
+      <p>Inicio</p>
+    </div>
+    <div class="nav-item">
+      <i class="fa-solid fa-ticket"></i>
+      <p>Promos</p>
+    </div>
+    <div class="nav-item" onclick="window.location.href='/pagina4'">
+      <i class="fa-solid fa-credit-card"></i>
+      <p>Billetera</p>
+    </div>
+    <div class="nav-item">
+      <i class="fa-solid fa-user"></i>
+      <p>Tú</p>
+    </div>
+  </div>
+
+  <br /><br /><br /><br /><br />
+</div>
+
+<style>
+  .data {
+    max-height: 243px;
+  }
+
+  .container {
+    padding: 15px;
+    background-color: #ffffff;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .container:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .saldo {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    margin-left: 15px;
+  }
+
+  .saldo-ahorro {
+    
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+  }
+
+  .card-detail {
+    width: 45%;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+  }
+  .card {
+    width: 370px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .balance,
+  .ahorro {
+    position: absolute;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    transition: opacity 0.5s ease;
+  }
+
+  .balance {
+    background: #74E6C7;
+    color: black;
+  }
+
+  .ahorro {
+    background: #4B1D80;
+    color: white;
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card.flipped .balance {
+    opacity: 0;
+  }
+
+  .card.flipped .ahorro {
+    opacity: 1;
+  }
+
+  .overview {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  .overview p {
+    font-size: 22px;
+    color: #000000;
+    font-style: normal;
+    margin-top: 10px;
+  }
+
+  .select-container {
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    padding: 8px;
+    height: 17px;
+    transition: all 0.3s ease;
+  }
+
+  .ia-container img {
+    width: 32px;
+    margin-left: 178px;
+  }
+
+  .select-container:hover {
+    border-color: #6c5ce7;
+  }
+
+  .overview select {
+    border: hidden;
+    font-size: 14px;
+    color: #6c5ce7;
+  }
+
+  .loss-gain {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    column-gap: 30px;
+  }
+
+
+
+  .loss-card {
+    background-color: #30a687;
+    margin-left: 20px;
+  }
+
+  .gain-card {
+    background-color: #574da0;
+    margin-right: 20px;
+  }
+
+  .monto {
+    font-size: 45px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-left: 10px;
+  }
+
+  .card:hover i {
+    transform: scale(1.1);
+  }
+
+  .nav-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-item {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .nav-item i {
+    font-size: 20px;
+    color: #6c5ce7;
+  }
+</style>
+
+<script>
+  const mainCard = document.getElementById('mainCard');
+  const balanceCard = document.getElementById('balanceCard');
+  const ahorroCard = document.getElementById('ahorroCard');
+
+  mainCard.addEventListener('click', () => {
+    mainCard.classList.toggle('flipped');
+  });
+
+  const selectOption = document.querySelector(".custom-select");
+  const graph = document.querySelector(".data");
+
+  selectOption.addEventListener("change", (e) => {
+    const selectedValue = e.target.value;
+    if (selectedValue === "dia") {
+      graph.src = "/diagrama-dia.png";
+    } else if (selectedValue === "mes") {
+      graph.src = "/diagrama-mes.png";
+    } else if (selectedValue === "anio") {
+      graph.src = "/diagrama-anio.png";
+      graph.style.height = "243px";
+    }
+    console.log(selectedValue);
+  });
+</script>
