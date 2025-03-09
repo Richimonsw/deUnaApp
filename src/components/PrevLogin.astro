@@ -8,7 +8,10 @@ import QrCode from "../components/QrCode";
     <img src={deunaLogo.src} alt="Deuna logo" />
   </div>
   
+  <div class="qr">
+    
   <QrCode client:load />
+  </div>
 
   <p class="text-qr">Usa este código QR para cobrar</p>
 
@@ -46,12 +49,7 @@ import QrCode from "../components/QrCode";
   .logo img {
     max-width: 200px;
     width: 100%;
-    margin-top: -20px;
-  }
-
-  .qr img {
-    max-width: 200px;
-    width: 100%;
+    margin-top: -35px;
   }
 
   .text-qr {
@@ -63,7 +61,7 @@ import QrCode from "../components/QrCode";
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    margin-top: 150px;
+    margin-top: 100px;
   }
 
   .button {

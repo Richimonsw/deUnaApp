@@ -49,17 +49,17 @@
         <i class="fa-solid fa-shield-halved"></i>
         <span>Verificar <br>Pago</span>
       </div>
-      <div class="button" onclick="window.location.href='/finanzas'">
+      <div class="button-new" onclick="window.location.href='/finanzas'">
         <i class="fa-solid fa-scale-unbalanced-flip"></i>
         <span>Finanzas</span>
       </div>
     </div>
     <div class="options-items">
-      <div class="button" onclick="window.location.href='/Ahorros'">
+      <div class="button-new" onclick="window.location.href='/Ahorros'">
         <i class="fa-solid fa-robot"></i>
         <span>Ahorro <br>IA</span>
       </div>
-      <div class="button" onclick="window.location.href='/mapa'">
+      <div class="button-new" onclick="window.location.href='/mapa'">
         <i class="fa-solid fa-map"></i>
         <span>Mapa</span>
       </div>
@@ -82,12 +82,14 @@
   <div class="nav-bar">
     <div class="nav-item" onclick="window.location.href='/home'"><i class="fa-solid fa-house"></i> <p>Inicio</p></div>
     <div class="nav-item"><i class="fa-solid fa-ticket"></i> <p>Promos</p></div>
-    <div class="nav-item" onclick="window.location.href='/pagina4'">
+    <div class="nav-item" >
         <i class="fa-solid fa-credit-card"></i> 
         <p>Billetera</p>
     </div>
     <div class="nav-item"><i class="fa-solid fa-user"></i> <p>Tú</p></div>
 </div>
+
+<br><br><br><br><br><br><br>
 </div>
 <style>
   .container {
@@ -188,6 +190,31 @@
     text-align: center;
   }
 
+  .button-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #00dcac;
+    width: 10%;
+    min-width: 100px;
+  }
+
+  .button-new i {
+    
+    background-color: #3d2555;
+    font-size: 24px;
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+  }
+  
+  .button-new span {
+    font-size: 14px;
+    color: #000000;
+    text-align: center;
+  }
+
   .acction-container {
     display: flex;ç
     flex-direction: column;
@@ -246,7 +273,7 @@
 
 .nav-item i {
     font-size: 20px;
-    color: #6c5ce7;
+    color: #662D91;
 }
 
 
