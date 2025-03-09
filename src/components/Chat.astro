@@ -1,5 +1,6 @@
 ---
 import iconoD1 from "../assets/icon-deuna.png";
+const apiKey = import.meta.env.PUBLIC_OPENAI_API_KEY;
 ---
 
 <div class="chat-container">
@@ -21,7 +22,12 @@ import iconoD1 from "../assets/icon-deuna.png";
   </div>
 
   <div class="chat-input">
-    <input type="text" id="message-input" placeholder="Escribe tu mensaje aquí..." autocomplete="off"/>
+    <input
+      type="text"
+      id="message-input"
+      placeholder="Escribe tu mensaje aquí..."
+      autocomplete="off"
+    />
     <button id="send-btn">&#10148;</button>
   </div>
 </div>
@@ -182,8 +188,23 @@ import iconoD1 from "../assets/icon-deuna.png";
 </style>
 
 <script>
-  const apiKey = "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";
-  const systemPrompt = `Eres un asistente financiero de la empresa Deuna. Ayudas a mejorar la educación financiera y crear planes de ahorro personalizados...`;
+  const apiKey = import.meta.env.PUBLIC_OPENAI_API_KEY;
+
+  const systemPrompt = `
+Eres un Asistente Financiero experto de la empresa Deuna. Tu misión es guiar a los usuarios para que mejoren su educación financiera y adopten hábitos de ahorro y planificación económica efectivos. Adicionalmente, debes actuar de forma cercana y profesional para ayudarles a comprender mejor su situación financiera y ofrecerles planes personalizados, consejos prácticos y herramientas para alcanzar sus metas económicas.
+
+Tu rol y lineamientos clave:
+1. Profesionalismo y empatía: Mantén siempre un tono respetuoso, claro y empático. Eres un experto en finanzas personales que ayuda a los usuarios a ahorrar y llevar un mejor control de sus ingresos y gastos.
+2. Educación financiera: Explica conceptos financieros —como presupuesto, gastos fijos, gastos variables, tasa de interés, inversión, deudas, etc.— de forma sencilla y didáctica. Ajusta la complejidad según el nivel de entendimiento del usuario.
+3. Plan de ahorro personalizado: Diseña planes de ahorro realistas y adaptados a la situación de cada persona. Calcula objetivos, plazos y montos de aportación, brindando sugerencias sobre cómo optimizar los gastos y priorizar metas.
+4. Optimización de recursos: Orienta sobre la mejor manera de administrar el dinero, reducir gastos innecesarios y maximizar el rendimiento de sus ingresos, incluyendo recomendaciones de herramientas o métodos de seguimiento de gastos e ingresos.
+5. Resolución de dudas financieras: Responde de manera precisa y con fundamentos a preguntas sobre finanzas personales, inversión, préstamos, créditos, deudas, seguros, planes de retiro, entre otros.
+6. Orientado a la acción: Ofrece pasos concretos que el usuario pueda seguir para implementar mejoras financieras. Puedes incluir listas de verificación, recomendaciones de ahorro, ejemplos de presupuestos y comparaciones de productos financieros.
+7. Enfoque en la misión de Deuna: Recuerda que eres parte de la empresa Deuna, por lo que transmitir confianza y cercanía es fundamental. Eres un apoyo confiable que busca ayudar en la salud financiera de los usuarios.
+
+Objetivo:
+Brindar orientación experta para que cada usuario pueda llevar una vida económica estable, con mejores hábitos financieros y claridad en la toma de decisiones financieras a lo largo del tiempo.
+`;
 
   function parseMarkdown(text) {
     return text
@@ -222,58 +243,59 @@ import iconoD1 from "../assets/icon-deuna.png";
     }, 1000);
   });
 
-  document.getElementById("send-btn").addEventListener("click", async function () {
-    const messageInput = document.getElementById("message-input");
-    const messageText = messageInput.value.trim();
-    if (messageText !== "") {
-      const chatBox = document.getElementById("chat-box");
+  document
+    .getElementById("send-btn")
+    .addEventListener("click", async function () {
+      const messageInput = document.getElementById("message-input");
+      const messageText = messageInput.value.trim();
+      if (messageText !== "") {
+        const chatBox = document.getElementById("chat-box");
 
-      const userMessage = document.createElement("div");
-      userMessage.classList.add("message", "sent");
-      Object.assign(userMessage.style, {
-        background: "#3d2555", 
-        color: "white", 
-        padding: "10px", 
-        borderRadius: "15px", 
-        fontSize: "14px",
-        maxWidth: "75%",
-        marginLeft: "83px",
+        const userMessage = document.createElement("div");
+        userMessage.classList.add("message", "sent");
+        Object.assign(userMessage.style, {
+          background: "#3d2555",
+          color: "white",
+          padding: "10px",
+          borderRadius: "15px",
+          fontSize: "14px",
+          maxWidth: "75%",
+          marginLeft: "83px",
+        });
+        userMessage.innerHTML = `<div class='message-content'><p>${messageText}</p></div>`;
+        chatBox.appendChild(userMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        messageInput.value = "";
 
-      });
-      userMessage.innerHTML = `<div class='message-content'><p>${messageText}</p></div>`;
-      chatBox.appendChild(userMessage);
-      chatBox.scrollTop = chatBox.scrollHeight;
-      messageInput.value = "";
+        const botMessage = document.createElement("div");
+        botMessage.classList.add("message", "received");
+        Object.assign(botMessage.style, {
+          background: "#e5e5ea",
+          borderRadius: "15px",
+          padding: "10px",
+          maxWidth: "75%",
+          fontSize: "14px",
+          position: "relative",
+          color: "#333",
+        });
 
-      const botMessage = document.createElement("div");
-      botMessage.classList.add("message", "received");
-      Object.assign(botMessage.style, { 
-        background: "#e5e5ea", 
-        borderRadius: "15px", 
-        padding: "10px", 
-        maxWidth: "75%", 
-        fontSize: "14px", 
-        position: "relative", 
-        color: "#333",
-      });
+        const botContent = document.createElement("div");
+        botContent.classList.add("message-content", "typing");
+        botContent.innerHTML = "⌛...";
 
-      const botContent = document.createElement("div");
-      botContent.classList.add("message-content", "typing");
-      botContent.innerHTML = "⌛...";
-      
-      botMessage.appendChild(botContent);
-      chatBox.appendChild(botMessage);
-      chatBox.scrollTop = chatBox.scrollHeight;
+        botMessage.appendChild(botContent);
+        chatBox.appendChild(botMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
 
-      try {
-        const botResponse = await sendMessageToAI(messageText);
-        botContent.classList.remove("typing");
-        botContent.innerHTML = `<p>${botResponse}</p>`;
-      } catch (error) {
-        botContent.innerHTML = `<p>❌ Error al procesar tu mensaje.</p>`;
+        try {
+          const botResponse = await sendMessageToAI(messageText);
+          botContent.classList.remove("typing");
+          botContent.innerHTML = `<p>${botResponse}</p>`;
+        } catch (error) {
+          botContent.innerHTML = `<p>❌ Error al procesar tu mensaje.</p>`;
+        }
+
+        chatBox.scrollTop = chatBox.scrollHeight;
       }
-
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-  });
+    });
 </script>
